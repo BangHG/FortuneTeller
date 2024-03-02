@@ -1,0 +1,74 @@
+﻿.cardPage {
+  overflow: hidden;
+  background: url(../images/card/bg.jpg) 50% 50%;
+  background-size: cover;
+  // background-size: 1920px auto;
+  background-attachment: fixed;
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  &__container {
+    // max-width: 768px;
+    // width: calc(100vw - 40px);
+    // background: red;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    // margin: 60px auto;
+    margin: 0 auto 20px;
+  }
+  .title-bx {
+    width: 100%;
+    text-align: center;
+    // margin-bottom: 20px;
+    .logo {
+      background: url(../images/inc/logo.png) no-repeat;
+      background-size: contain;
+      width: 180px;
+      height: 114px;
+      display: inline-block;
+      margin-bottom: 28px;
+      @include lg-min {
+        // position: absolute;
+        // top: 20px;
+        // right: 20px;
+        display: none;
+      }
+    }
+    .title {
+      word-break: keep-all;
+      color: #fff;
+      font-size: 24px;
+      line-height: (40/30);
+      font-style: italic;
+      span {
+        font-size: inherit;
+        display: block;
+        word-break: keep-all;
+      }
+      br {
+        display: none;
+      }
+    }
+    @include lg {
+      margin-bottom: vw(50);
+      .logo {
+        background-image: url(../images/main/logo_m.png);
+        width: vw(352);
+        height: vw(224);
+      }
+      .title {
+        // margin-top: vw(63);
+        font-size: vw(30);
+        br {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+// done 2022-10-18 11:56 banghg

@@ -1,0 +1,411 @@
+@charset 'UTF-8';
+
+// @function vw($val) {
+//   @return ($val/1080 * 100vw);
+// }
+
+// text-align: center;
+// align-items: center;
+// align-content: center;
+// display: flex;
+$cardW: 328px/2; //133px;
+$cardH: 528px/2;
+$cardMargin: 10px;
+
+//plugin
+.cardWrap__scroll {
+  width: 768px;
+  margin: 0 auto;
+  padding: 30px 20px 0;
+  margin-bottom: 30px;
+
+  .mCustomScrollBox {
+    $shadow: 10%;
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) $shadow, rgba(0, 0, 0, 1) 100%-$shadow, rgba(0, 0, 0, 0) 100%);
+
+    // &.point-start {
+    //   mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 100%-$shadow, rgba(0, 0, 0, 0) 100%);
+    // }
+    // &.point-end {
+    //   mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) $shadow, rgba(0, 0, 0, 1) 100%);
+    // }
+  }
+  @at-root {
+    .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_draggerRail {
+      display: none;
+    }
+    .mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+      background-color: rgba(#999, (0.75 - 0.3));
+    }
+
+    .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+      background-color: rgba(#999, (0.85 - 0.3));
+    }
+
+    .mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar,
+    .mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar {
+      background-color: rgba(#999, (0.9 - 0.3));
+    }
+  }
+  .mCSB_container {
+    margin-bottom: 0 !important;
+    padding: 0 30px;
+  }
+
+  .mCSB_scrollTools.mCSB_scrollTools_horizontal {
+    height: 0 !important;
+    position: static !important;
+    .mCSB_draggerContainer {
+      margin: 0;
+      bottom: 0;
+      top: auto;
+    }
+    .mCSB_buttonLeft {
+      background-image: url(../images/card/scrollBtn-left.png);
+    }
+    .mCSB_buttonRight {
+      background-image: url(../images/card/scrollBtn-right.png);
+    }
+    .mCSB_buttonLeft,
+    .mCSB_buttonRight {
+      position: absolute;
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      width: 61px;
+      height: 177px;
+      z-index: 5;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.7;
+      &:hover,
+      &:focus {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+//카드shuffle, draw
+.cardWrap {
+  // width: 1914px;
+  @at-root .cardPage {
+    &--tarot {
+      .cardWrap {
+        width: ($cardW + $cardMargin) * 11;
+      }
+    }
+    &--soulmate {
+      .cardWrap,
+      .cardWrap__scroll {
+        width: ($cardW + $cardMargin) * 3;
+      }
+    }
+  }
+  margin: 0 auto;
+  max-height: 100vh;
+  height: ($cardH + $cardMargin) * 2; //800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+  position: relative;
+  box-sizing: content-box;
+
+  $particleSize: 100px; //100px; //213px; // 8px;
+  $radius: 160; // 80;
+  $lapDuration: 2000ms; // 3s;
+
+  .card {
+    width: $cardW;
+    height: $cardH;
+    cursor: pointer;
+    position: absolute;
+    opacity: 0;
+    top: 50%; //vh;
+    left: 50%; //vw;
+    box-shadow: 0 0 0 rgba(#fff, 0.1);
+    // transition: left 500ms, top 500ms, box-shadow 500ms, transform 500ms;
+    // border-radius: 4px;
+    // overflow: hidden;
+    box-shadow: 0 0 5px rgba(#000, 0.2);
+
+    //셔플위치를 초기값으로.
+    // opacity: 1 !important;//test
+    margin-left: -$cardW/2;
+    top: 30%;
+    //셔플위치를 초기값으로.
+    &.shuffle {
+      //셔플 위치
+      top: 30%;
+      left: 50%;
+      margin-left: -$cardW/2;
+      animation: spin $lapDuration 1;
+      // opacity: 1;
+    }
+    &.complete {
+      transition: top 500ms, left 500ms, opacity 0ms;
+      transform: none !important;
+      opacity: 1;
+      margin-left: 0;
+      top: 0;
+      // top: $cardH + 30px;
+    }
+
+    &[data-card-kind='tarot'] {
+      $particles: 44; //22; //62; // has to match nodes in dom
+      &:nth-child(12),
+      &:nth-child(13),
+      &:nth-child(14),
+      &:nth-child(15),
+      &:nth-child(16),
+      &:nth-child(17),
+      &:nth-child(18),
+      &:nth-child(19),
+      &:nth-child(20),
+      &:nth-child(21),
+      &:nth-child(22) {
+        &.complete {
+          // top: 50%;
+          top: $cardH + $cardMargin;
+        }
+      }
+
+      @for $i from 1 through $particles / 2 {
+        //n번째 카드에 애니메이션
+        &:nth-child(#{$i}) {
+          $angle: ($i / $particles) * 720;
+          transform: rotate(#{$angle}deg) translate3d(#{$radius}px, 0, 0);
+          animation-delay: $i * ($lapDuration / $particles);
+          z-index: $i;
+        }
+      }
+      @for $i from 1 through ($particles / 4) {
+        &:nth-child(#{$i}),
+        &:nth-child(#{$i+($particles / 4)}) {
+          &.complete {
+            left: (($i - 1) / ($particles / 4) * 100%);
+          }
+        }
+      }
+    }
+    &[data-card-kind='soulmate'] {
+      $particles: 12; //
+      &:nth-child(4),
+      &:nth-child(5),
+      &:nth-child(6) {
+        &.complete {
+          top: $cardH + $cardMargin;
+        }
+      }
+
+      @for $i from 1 through $particles / 2 {
+        //n번째 카드에 애니메이션
+        &:nth-child(#{$i}) {
+          $angle: ($i / $particles) * 720;
+          transform: rotate(#{$angle}deg) translate3d(#{$radius}px, 0, 0);
+          animation-delay: $i * ($lapDuration / $particles);
+          z-index: $i;
+        }
+      }
+      @for $i from 1 through ($particles / 4) {
+        &:nth-child(#{$i}),
+        &:nth-child(#{$i+($particles / 4)}) {
+          &.complete {
+            left: (($i - 1) / ($particles / 4) * 100%);
+          }
+        }
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        opacity: 0;
+      }
+      20%,
+      100% {
+        opacity: 1;
+      }
+      100% {
+        transform: none;
+      }
+    }
+  }
+}
+
+//카드뒤집기 flip card
+.cardWrap {
+  perspective: 1100px;
+  position: relative;
+  //
+  // position: absolute;
+  // left:50%;
+  // top:0;
+  // transform: translateX(-50%);
+  //
+
+  .card {
+    &,
+    &Case {
+      overflow: visible;
+      transition: 1s;
+    }
+    &Case {
+      transform-style: preserve-3d;
+      transform-origin: center;
+      transition-delay: 200ms;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      position: absolute;
+    }
+    &.pick {
+      // 중앙, 맨위로 이동..
+      left: 50% !important;
+      // top: $cardH + 100px !important;
+      top: 0 !important;
+      top: $cardH/2 - $cardH/4 !important;
+      transform: translateX(-50%) !important;
+      z-index: 500 !important;
+      transition: 500ms all !important;
+      transition-delay: 500ms all !important;
+
+      .cardCase {
+        animation: pickedCard 2000ms !important;
+        transform-origin: top center;
+        animation-fill-mode: both;
+        transition-delay: 0;
+        transform: scale(1.5) rotateY(180deg);
+        // transform: rotateY(180deg);
+        // transform: rotateY(180deg * 3) rotateX(360deg * 2);
+      }
+      @keyframes pickedCard {
+        0% {
+          transform: rotateY(0);
+        }
+        20% {
+          transform: scale(1) rotateY(180deg);
+        }
+        100% {
+          transform: scale(1.5) rotateY(180deg);
+        }
+      }
+    }
+    &__front,
+    &__back {
+      border-radius: 7px;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      background-size: contain;
+    }
+    &__back {
+      @at-root .card[data-card-kind='tarot'] .card__back {
+        // @at-root .cardPage--tarot .card__back {
+        background-image: url(../images/card/cardBack-tarot.jpg);
+      }
+      @at-root .card[data-card-kind='soulmate'] .card__back {
+        // @at-root .cardPage--soulmate .card__back {
+        background-image: url(../images/card/cardBack-soulmate.jpg);
+      }
+    }
+    &__front {
+      transform: rotateY(180deg);
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+//카드 보기 화면 view
+.pickedCard {
+  padding-top: 50px;
+  color: #fff;
+  text-align: center;
+  &__wrap {
+    margin-bottom: 60px;
+  }
+  .area-card {
+    width: 328px;
+    margin: 0 auto;
+    position: relative;
+    //FIXME: https://codepen.io/entartes79/pen/OJZrWPB 카드효과 넣을까?
+    .card {
+      z-index: 5;
+      position: relative;
+      border-radius: 16px;
+      box-shadow://;
+        0 0 25px rgba(#fff, 0.6),
+        //;
+        -5px 0 40px rgba(#fff9b1, 0.6),
+        //;
+        5px 0 40px rgba(#ffdd80, 0.6);
+    }
+  }
+  .area-text {
+    z-index: 5;
+    position: relative;
+    margin-top: 36px;
+    * {
+      word-break: keep-all;
+    }
+    .title {
+      line-height: 1.3;
+      font-size: 40px;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    .desc {
+      margin: 0 auto;
+      max-width: 600px;
+      font-weight: 300;
+      text-align: left;
+      font-size: 22px;
+      // color: rgba(#fff, 0.75);
+      color: #fff;
+      line-height: 1.3;
+    }
+
+    .soulmate-info {
+      margin-top: 30px;
+      &__title {
+        @include textHighlight;
+        text-align: center;
+        font-size: 26px;
+      }
+      .desc {
+        text-align: center;
+        color: #fff;
+      }
+    }
+  }
+  @include lg {
+    &__wrap {
+      margin-bottom: vw(90);
+    }
+    .area-text {
+      margin-top: vw(64);
+      .title {
+        font-size: vw(56);
+      }
+      .desc {
+        text-align: center;
+        font-size: vw(30);
+      }
+      .soulmate-info {
+        margin-top: vw(40);
+        &__title {
+          font-size: vw(38);
+        }
+      }
+    }
+  }
+}

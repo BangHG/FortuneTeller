@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+html,
+body {
+  font-family: 'Noto Serif', serif;
+}
+html {
+  // min-width: 768px;
+  background-color: #000;
+}
+body {
+  margin: 0 auto !important;
+  width: 100%;
+  height: auto;
+  overflow-x: hidden;
+  // min-width: 768px;
+  //전환효과..
+  transition: opacity 1000ms !important;
+  opacity: 0;
+  &[data-loading='done'] {
+    opacity: 1;
+  }
+}
+
+img {
+  width: 100%;
+  max-width: fit-content;
+}
+
+main {
+  //기본여백. footer 관여
+  padding: 50px 0 80px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  text-align: center;
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+// .position-absolute {
+//   position: absolute;
+// }

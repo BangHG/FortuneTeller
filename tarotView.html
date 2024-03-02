@@ -1,0 +1,58 @@
+﻿---
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  {% include_relative inc/head.html %}
+  <body>
+    {% include_relative inc/header.html %}
+
+    <main class="cardPage cardPage--tarot">
+      <div class="container" data-aos="fade-in" data-aos-duration="1000">
+        <div id="cardResult" class="pickedCard__wrap">
+          <!-- 고른 카드 정보가 노출됩니다 -->
+        </div>
+
+        <a href="soulmateStart.html" class="spr-btn spr-btn--soulmate btn_drawsoulmatecard">
+          <span class="sr-only">Draw your soulmate card</span>
+        </a>
+      </div>
+    </main>
+
+    {% include_relative inc/footer.html %}
+
+    <script>
+      const tarotPickedCard = localStorage.getItem('tarot');
+
+      $.ajax({
+        type: 'GET',
+        url: 'js/cards.json',
+        dataType: 'json',
+        success: function (res) {
+          // console.log(res);
+        },
+      }).done(function (data) {
+        var newContent = '';
+        // for (var i = 0; i < data.tarot.length; i++) {
+        newContent += '<div class="pickedCard">';
+        newContent += '<div class="area-card">';
+        newContent += '<span class="spr-pickedCard sparkle sparkle--1"></span><span class="spr-pickedCard sparkle sparkle--2"></span><span class="spr-pickedCard sparkle sparkle--3"></span><span class="spr-pickedCard sparkle sparkle--4"></span><span class="spr-pickedCard sparkle sparkle--5"></span>';
+        newContent += '<img class="card" src="assets/images/tarot/' + data.tarot[tarotPickedCard - 1].id + '.jpg">';
+        newContent += '</div>';
+        newContent += '<div class="area-text">';
+        newContent += '<h2 class="title">' + data.tarot[tarotPickedCard - 1].name + '</h2>';
+        newContent += '<p class="desc">' + data.tarot[tarotPickedCard - 1].desc + '</p>';
+        newContent += '</div>';
+        newContent += '</div>';
+        // }
+        $('#cardResult').html(newContent);
+      });
+      // .fail(function (jqXHR, textStatus, errorThrown) {
+      //   console.log('fail: ', jqXHR);
+      // })
+      // .always(function (data, textStatus, jqXHR) {
+      //   console.log('always: ', data);
+      // });
+    </script>
+  </body>
+</html>

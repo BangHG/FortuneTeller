@@ -1,0 +1,278 @@
+﻿.couponCode {
+  display: flex;
+  font-size: 26px;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+  margin: 40px auto 38px;
+  flex-wrap: wrap;
+
+  column-gap: 10px;
+  &__guide {
+    flex: 1 1 auto;
+    text-align: right;
+    margin-top: 1em;
+    .popup-link {
+      color: #fff;
+      font: inherit;
+      font-size: 20px;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+    }
+  }
+  &__input,
+  &__button {
+    flex: 1 1 auto;
+    height: 60px;
+    border: 0;
+    font-size: inherit !important;
+    font-family: inherit !important;
+  }
+  &__input {
+    text-align: center;
+    max-width: 410px;
+    color: #222;
+    background-color: #fff;
+  }
+  &__button {
+    background-color: #7c69ff;
+    color: #fff;
+    padding: 0 1em;
+    border-radius: 5px;
+    font-weight: 600 !important;
+    &:hover,
+    &:focus {
+      background-color: lighten(#7c69ff, 5%);
+    }
+  }
+  @include lg {
+    flex-wrap: wrap;
+    &__input,
+    &__button {
+      max-width: 100%;
+      width: 100%;
+      margin: 0;
+    }
+    &__button {
+      margin-top: 10px;
+    }
+  }
+}
+
+.cardPage--collectCard {
+  .card {
+    // $cardW: 328px;
+    // $cardH: 528px;
+    // width: $cardW;
+    // height: $cardH;
+    .cardCase {
+      overflow: hidden;
+      border-radius: 16px;
+      position: relative;
+    }
+    .card__description {
+      position: absolute;
+      display: none;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+    // &.picked {
+    //   .card__description {
+    //     display: block;
+    //   }
+    // }
+  }
+}
+
+.collectCard-swiper {
+  &__wrap {
+    margin-top: 70px;
+    //영역밖 클릭방지
+    width: 100%;
+    // display: block;
+    display: flex;
+    justify-content: center;
+  }
+  // max-width: 768px * 1.2; //fade 되는 카드 영역 보전
+  max-width: 328px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  // margin: 70px auto 0;
+  @include lg {
+    // margin: 90px auto 0;
+  }
+  margin: 0 10px;
+  .swiper-container {
+    max-width: 768px;
+    width: 100%;
+  }
+  .swiper-container,
+  .swiper-wrapper {
+    overflow: visible;
+  }
+  .swiper-slide-active {
+    &:after {
+      content: none !important;
+    }
+  }
+  .swiper-slide {
+    position: relative;
+    opacity: 0;
+    transition-property: transform, -webkit-transform, opacity;
+    width: 328px;
+    height: 528px;
+  }
+  .card {
+    position: relative;
+    box-shadow: 0 0 10px 0 rgba(#000, 0.3), 0 0 30px 0 rgba(#000, 0.2);
+  }
+  .swiper-slide-prev,
+  .swiper-slide-next,
+  .swiper-slide-active {
+    opacity: 1;
+  }
+  // .label-pick {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   display: block;
+  //   z-index: 5;
+  //   background-image: url(../images/spr-collectCard.png);
+  //   width: 152px;
+  //   height: 153px;
+  // }
+  // &--tarot {
+  //   .label-pick {
+  //     background-position: -10px -683px;
+  //   }
+  // }
+  // &--soulmate {
+  //   .label-pick {
+  //     background-position: -10px -510px;
+  //   }
+  // }
+
+  // .swiper-button {
+  //   z-index: 50;
+  //   position: absolute;
+  //   top: 50%;
+  //   transform: translateY(-50%);
+  //   opacity: 0.7;
+  //   width: 61px;
+  //   height: 137px;
+  //   background-image: url(../images/spr-collectCard.png);
+  //   &--prev {
+  //     left: 10px;
+  //     background-position: -10px -196px;
+  //   }
+
+  //   &--next {
+  //     background-position: -10px -353px;
+  //     right: 10px;
+  //   }
+  //   &:hover {
+  //     opacity: 1;
+  //   }
+  // }
+  .btn {
+    $margin: 8px;
+    background-image: url(../images/spr-collectCard.png?ver=221109);
+    position: absolute;
+    width: 71px;
+    height: 73px;
+    bottom: $margin;
+    &--flip {
+      left: $margin;
+      background-position: -10px -10px;
+    }
+
+    &--download {
+      right: $margin;
+      background-position: -10px -103px;
+    }
+  }
+}
+
+.share-area {
+  margin: 90px auto 50px;
+  text-align: center;
+  .title {
+    span {
+      @include textHighlight;
+      display: block;
+      font-size: inherit;
+    }
+    margin-bottom: 50px;
+    font-size: 30px;
+  }
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    li {
+      margin: 0 10px;
+    }
+  }
+}
+.spr-share {
+  background-image: url(../images/spr-share.png);
+  background-repeat: no-repeat;
+  display: block;
+  width: 192px;
+  height: 192px;
+  &--facebook {
+    background-position: -10px -10px;
+  }
+
+  &--twitter {
+    background-position: -10px -222px;
+  }
+
+  &--url {
+    background-position: -10px -434px;
+  }
+}
+
+.survey-btn {
+  margin-top: 50px;
+  position: relative;
+  &.hide {
+    display: none;
+  }
+  &,
+  .popup-link {
+    height: 68px;
+  }
+
+  .popup-link {
+    z-index: 100;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #7c69ff;
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+    font-weight: 600 !important;
+    font-family: inherit !important;
+    font-size: 30px;
+    transition: 300ms all;
+    max-width: 100%;
+    @include lg-min {
+      max-width: 768px - 40px;
+    }
+    &.fix {
+      max-width: 768px - 40px;
+      position: relative;
+      border-radius: 10px;
+    }
+    &:hover,
+    &:focus {
+      background-color: lighten(#7c69ff, 5%);
+    }
+  }
+}

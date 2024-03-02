@@ -1,0 +1,64 @@
+﻿---
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  {% include_relative inc/head.html %}
+  <body>
+    {% include_relative inc/header.html %}
+
+    <main class="cardPage cardPage--soulmate">
+      <div class="container" data-aos="fade-in" data-aos-duration="1000">
+        <div id="cardResult" class="pickedCard__wrap">
+          <!-- 고른 카드 정보가 노출됩니다 -->
+        </div>
+
+        <a href="collectCard.html?" class="spr-btn spr-btn--collectCard btn_collectthefinalcards">
+          <span class="sr-only"> Collect the final cards </span>
+        </a>
+      </div>
+    </main>
+
+    {% include_relative inc/footer.html %}
+
+    <script>
+      const soulmatePickedCard = localStorage.getItem('soulmate');
+
+      $.ajax({
+        type: 'GET',
+        url: 'js/cards.json',
+        dataType: 'json',
+        success: function (res) {
+          // console.log(res);
+        },
+      }).done(function (data) {
+        var newContent = '';
+        // for (var i = 0; i < data.soulmate.length; i++) {
+        newContent += '<div class="pickedCard">';
+        newContent += '<div class="area-card">';
+        newContent += '<span class="spr-pickedCard sparkle sparkle--1"></span><span class="spr-pickedCard sparkle sparkle--2"></span><span class="spr-pickedCard sparkle sparkle--3"></span><span class="spr-pickedCard sparkle sparkle--4"></span><span class="spr-pickedCard sparkle sparkle--5"></span>';
+        newContent += '<img class="card" src="assets/images/soulmate/' + data.soulmate[soulmatePickedCard - 1].id + '.jpg" alt="' + data.soulmate[soulmatePickedCard - 1].name + '">';
+        newContent += '</div>';
+        newContent += '<div class="area-text">';
+        // newContent += '<h2 class="title">' + data.soulmate[soulmatePickedCard - 1].name + '</h2>';
+        newContent += '<p class="desc">' + data.soulmate[soulmatePickedCard - 1].desc + '</p>';
+
+        newContent += '<div class="soulmate-info"> <h3 class="soulmate-info__title">RECOMMENDED HUNTING SPOT</h3><p class="desc">' + data.soulmate[soulmatePickedCard - 1].recommHuntingSpot + '</p></div>';
+        newContent += '<div class="soulmate-info"> <h3 class="soulmate-info__title">RECOMMENDED BOSS</h3><p class="desc">' + data.soulmate[soulmatePickedCard - 1].recommBoss + '</p></div>';
+        newContent += '<div class="soulmate-info"> <h3 class="soulmate-info__title">RECOMMENDED PARTY</h3><p class="desc">' + data.soulmate[soulmatePickedCard - 1].recommParty + '</p></div>';
+        newContent += '<div class="soulmate-info"> <h3 class="soulmate-info__title">SYNERGY WITH</h3><p class="desc">' + data.soulmate[soulmatePickedCard - 1].synergyWith + '</p></div>';
+
+        newContent += '</div>';
+        newContent += '</div>';
+        // }
+        $('#cardResult').html(newContent);
+      });
+      // .fail(function (jqXHR, textStatus, errorThrown) {
+      //   console.log('fail: ', jqXHR);
+      // })
+      // .always(function (data, textStatus, jqXHR) {
+      //   console.log('always: ', data);
+      // });
+    </script>
+  </body>
+</html>

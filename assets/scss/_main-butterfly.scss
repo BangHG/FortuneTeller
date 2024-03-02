@@ -1,0 +1,249 @@
+﻿// butterfly
+// /* Inspired by https://codepen.io/htgmanics/pen/nJwdl */
+@keyframes fluttering {
+  0%,
+  25%,
+  50%,
+  75%,
+  100% {
+    padding-top: 0;
+    padding-left: 0;
+  }
+  12.5%,
+  37.5%,
+  62.5%,
+  87.5% {
+    padding-top: 20px;
+    padding-left: 40px;
+    // transform: translate3d(0, 150px, 0);
+  }
+}
+@keyframes left-wing-flap {
+  0% {
+    transform: translate3d(0, 0, 0) scaleX(1) rotate3d(0, 1, 0, 60deg);
+  }
+  50% {
+    transform: translate3d(0, 0, 0) scaleX(1) rotate3d(0, 1, 0, 20deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scaleX(1) rotate3d(0, 1, 0, 60deg);
+  }
+}
+@keyframes right-wing-flap {
+  0% {
+    transform: translate3d(0, 0, 0) scaleX(-1) rotate3d(0, 1, 0, 60deg);
+  }
+  50% {
+    transform: translate3d(0, 0, 0) scaleX(-1) rotate3d(0, 1, 0, 20deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scaleX(-1) rotate3d(0, 1, 0, 60deg);
+  }
+}
+
+.butterfly-container {
+  z-index: 3;
+  transform-style: preserve-3d;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  .wrap {
+    transform-style: preserve-3d;
+    position: absolute;
+  }
+
+  .butterfly {
+    // animation: fluttering 13s ease-in-out infinite; //sway
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100px;
+    height: 100px;
+    margin-left: -50px;
+    margin-top: -50px;
+    transform-style: preserve-3d;
+    transform-origin: 50% 50%;
+  }
+  $butterflyW: 193px/3;
+  $butterflyH: 293px/3;
+  .wing {
+    opacity: 0.9;
+    position: absolute;
+    background: url(../images/main/butterfly.png);
+    width: $butterflyW;
+    height: $butterflyH;
+    background-size: cover;
+    transform-style: preserve-3d;
+    transform-origin: 50% 50%;
+    transform: translate3d(0, 0, 0) rotate3d(1, 0.5, 0, 45deg);
+    animation-duration: 2000ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    &.right {
+      transform-origin: $butterflyW ($butterflyH/2);
+      transform: translate3d(0px, 0, 0) scaleX(-1) rotate3d(0, 1, 0, 45deg);
+      animation-name: right-wing-flap;
+      filter: FlipH; // 좌우 뒤집기
+      -ms-filter: 'FlipH';
+    }
+
+    &.left {
+      transform-origin: $butterflyW ($butterflyH/2);
+      animation-name: left-wing-flap;
+    }
+  }
+
+  // 랜덤애니메이션 생성
+  // @for $i from 1 through 4 {
+  //   &--#{$i} {
+  //     .butterfly {
+  //       animation-delay: -#{random(5) * 10000}#{ms};
+  //       animation-duration: #{random(8) * 10000}#{ms};
+  //       // animation: none;
+  //     }
+  //     .wing {
+  //         animation-duration: #{random(8) * 1000}#{ms};
+  //
+  //     }
+  //   }
+  // }
+
+  &.butterfly-container--1 {
+    filter: blur(2px) brightness(1.1);
+    margin-top: -354px;
+    margin-left: -490px;
+    @include lg {
+      margin-top: -450px;
+      margin-left: -290px;
+    }
+    .wrap {
+      transform: scale(1) rotate3d(1, -1, 0.5, 70deg);
+    }
+    .butterfly {
+      animation-delay: -40s;
+      animation-duration: 100s;
+    }
+    .wing {
+      animation-duration: 4s;
+    }
+  }
+
+  //2
+  &.butterfly-container--2 {
+    filter: blur(4px) saturate(120%) hue-rotate(-10deg);
+    margin-top: -4px;
+    margin-left: -560px;
+    @include lg {
+      margin-top: -4px;
+      margin-left: -400px;
+    }
+    .wrap {
+      transform: scale(1.5) rotate3d(1, -1, 1, 40deg);
+    }
+    .butterfly {
+      animation-delay: -50s;
+      animation-duration: 70s;
+    }
+    .wing {
+      animation-duration: 3s;
+    }
+  }
+
+  //3
+  &.butterfly-container--3 {
+    filter: blur(6px) brightness(0.95) hue-rotate(20deg);
+    margin-top: -300px;
+    margin-left: 600px;
+    @include lg {
+      margin-top: -510px;
+      margin-left: 305px;
+    }
+    .wrap {
+      transform: scale(2.3) rotate3d(1, 4, -3, 67deg);
+    }
+    .butterfly {
+      animation-delay: -10s;
+      animation-duration: 80s;
+    }
+    .wing {
+      animation-duration: 5s;
+    }
+  }
+
+  //4
+  &.butterfly-container--4 {
+    filter: blur(2px);
+    margin-top: 100px;
+    margin-left: 400px;
+    @include lg {
+      margin-top: 396px;
+      margin-left: 330px;
+    }
+    .wrap {
+      transform: scale(0.88) rotate3d(2, 1, -1, 20deg);
+    }
+    .butterfly {
+      animation-delay: -20s;
+      animation-duration: 40s;
+    }
+    .wing {
+      animation-duration: 4s;
+    }
+  }
+}
+
+@keyframes hourglass1 {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  33%,
+  66% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-10px, 20px);
+  }
+}
+@keyframes hourglass2 {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  33%,
+  66% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+    transform: translate(10px, -20px);
+  }
+}
+
+.hourglass {
+  z-index: 3;
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: url(../images/main/hourglass.png) no-repeat;
+  &--1 {
+    animation: hourglass1 10s infinite;
+    @include spr(-10px, -10px, 267px, 328px);
+    margin-left: -880px;
+    margin-top: -530px;
+    filter: blur(3px);
+  }
+
+  &--2 {
+    animation: hourglass2 9s infinite;
+    @include spr(-10px, -358px, 219px, 246px);
+    margin-left: 480px;
+    margin-top: 120px;
+    // filter: blur(1px);
+  }
+}

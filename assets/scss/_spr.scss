@@ -1,0 +1,159 @@
+﻿@mixin spr($x: 0, $y: 0, $width: 0, $height: 0) {
+  background-position: $x $y;
+  width: $width;
+  height: $height;
+}
+@mixin spr-hover($x: 0, $y: 0, $width: 0, $height: 0) {
+  background-position: $x $y;
+  width: $width;
+  height: $height;
+  &:hover,
+  &:focus {
+    filter: brightness(1.1);
+    // background-position: $x $y - $height - 20px;
+  }
+}
+
+.spr-btn {
+  background-image: url(../images/spr-btns.png?Ver=1);
+  background-repeat: no-repeat;
+  display: inline-block;
+  z-index: 5;
+  position: relative;
+  &,
+  &:hover,
+  &:focus {
+    transition: all 0ms;
+  }
+
+  &--collectCard {
+    @include spr-hover(-10px, -10px, 431px, 102px);
+  }
+  &--redeem {
+    @include spr-hover(-10px, -132px, 321px, 102px);
+  }
+  &--reshuffle {
+    @include spr-hover(-10px, -254px, 339px, 32px);
+    display: block;
+    margin-left: auto;
+  }
+  &--shuffle {
+    @include spr-hover(-10px, -306px, 447px, 102px);
+  }
+  &--soulmate {
+    @include spr-hover(-10px, -428px, 555px, 102px);
+  }
+  &--startHere {
+    @include spr-hover(-10px, -550px, 347px, 102px);
+  }
+}
+
+.spr-pickedCard {
+  background-image: url(../images/card/spr-pickedCard.png);
+  background-repeat: no-repeat;
+  display: block;
+  position: absolute;
+  @keyframes cardSparkle {
+    0%,
+    100% {
+      // opacity: 1;
+    }
+    50% {
+      filter: brightness(1.2);
+      opacity: 0.9;
+    }
+  }
+  @keyframes cardShine {
+    0%,
+    33%,
+    66%,
+    100% {
+      opacity: 1;
+      filter: brightness(1);
+    }
+    15%,
+    45%,
+    75% {
+      opacity: 0.7;
+      filter: brightness(1.5);
+    }
+    0%,
+    100% {
+      transform: rotate(0);
+    }
+    50% {
+      transform: rotate(50deg);
+    }
+  }
+
+  @at-root .pickedCard .area-card {
+    &:after,
+    &:before {
+      content: '';
+      left: 50%;
+      z-index: 1;
+      position: absolute;
+      background-image: url(../images/card/spr-pickedCard.png);
+      background-repeat: no-repeat;
+      display: block;
+      position: absolute;
+    }
+
+    // &.shine--1 {
+    &:after {
+      @include spr(-10px, -10px, 811px, 1145px);
+      margin-left: -406px;
+      top: -333px;
+      animation: cardShine 60s * 1.5 infinite;
+    }
+
+    // &.shine--2 {
+    &:before {
+      @include spr(-10px, -1175px, 910px, 1117px);
+      margin-left: -450px;
+      top: -306px;
+      animation: cardShine 40s * 1.5 infinite;
+      animation-delay: -20s;
+    }
+  }
+
+  &.sparkle {
+    left: 50%;
+    animation: cardSparkle 1600ms infinite;
+  }
+  &.sparkle--1 {
+    @include spr(-10px, -2312px, 263px, 226px);
+    margin-left: -400px;
+    top: -18px;
+  }
+
+  &.sparkle--2 {
+    @include spr(-10px, -2558px, 264px, 213px);
+    animation-delay: -200ms;
+    margin-left: 134px;
+    top: 132px;
+  }
+
+  &.sparkle--3 {
+    animation-name: cardSparkle;
+    @include spr(-10px, -2791px, 234px, 195px);
+    animation-delay: -1200ms;
+    margin-left: 147px;
+    top: 398px;
+  }
+  &.sparkle--4 {
+    animation-name: cardSparkle;
+    @include spr(-10px, -3006px, 107px, 107px);
+    animation-delay: -1300ms;
+    margin-left: 16px;
+    top: -89px;
+  }
+
+  &.sparkle--5 {
+    animation-name: cardSparkle;
+    @include spr(-10px, -3133px, 141px, 229px);
+    animation-delay: -1400ms;
+    margin-left: -311px;
+    top: 263px;
+  }
+}

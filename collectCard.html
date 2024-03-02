@@ -1,0 +1,225 @@
+﻿---
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  {% include_relative inc/head.html %}
+  <body>
+    {% include_relative inc/header.html %}
+
+    <main class="cardPage cardPage--collectCard">
+      <div class="container" data-aos="fade-in" data-aos-duration="1000">
+        <div class="title-bx">
+          <a href="index.html" class="logo" title="Go to main page"> </a>
+          <p class="title">
+            <span data-aos="fadeIn" data-aos-duration="1500" data-aos-delay="100">These are the Fortune <br />and Soulmate cards you picked.</span>
+            <span data-aos="fadeIn" data-aos-duration="1500" data-aos-delay="300">We have prepared a gift for you to enjoy <br />with your soulmate.</span>
+            <span data-aos="fadeIn" data-aos-duration="1500" data-aos-delay="500" style="font-size: 0.8em">* Gift code can be found at Rewards > Coupon Code in the game.</span>
+          </p>
+        </div>
+
+        <div class="couponCode">
+          <input type="text" class="couponCode__input" id="couponCode__input" readonly />
+          <button type="button" class="couponCode__button btn_copycouponcode" onclick="copyCouponCode()">Copy Coupon Code</button>
+          <div class="couponCode__guide">
+            <button class="popup-link" data-popup="popup--couponGuide" type="button">Coupon Redemption Guide</button>
+          </div>
+        </div>
+        <a href="https://app.adjust.com/tic1lkx" target="_blank" class="spr-btn spr-btn--redeem btn_redeem"><span class="sr-only">Redeem</span></a>
+      </div>
+
+      <div class="collectCard-swiper__wrap">
+        <div class="collectCard-swiper collectCard-swiper--tarot"> </div>
+        <div class="collectCard-swiper collectCard-swiper--soulmate"> </div>
+      </div>
+
+      <div class="container">
+        <div class="share-area">
+          <p class="title"><span>Share your soulmate revelation</span><span>with your friends</span></p>
+
+          <ul class="share-area__list">
+            <li><a href="#" class="spr-share spr-share--facebook btn_sharefacebook" title="Share on Facebook"></a></li>
+            <li><a href="#" class="spr-share spr-share--twitter btn_sharetwitter" title="Share on Twitter"></a></li>
+            <li><a href="#none" onclick="copyUrl()" class="spr-share spr-share--url btn_copythelink" title="Share on the link"></a></li>
+          </ul>
+        </div>
+
+        <ul class="app-download">
+          <li><a href="https://app.adjust.com/k4fy0ev" class="app-download__link app-download__link--aos btn_googlestore_fortuneteller_last" target="_blank" title="GET IT ON Google Play"> </a></li>
+
+          <li><a href="https://app.adjust.com/vsn7791" class="app-download__link app-download__link--ios btn_appstore_fortuneteller_last" target="_blank" title="Download on the App Store"> </a></li>
+        </ul>
+
+        <div class="survey-btn">
+          <button class="popup-link btn_survey" data-popup="popup--survey">Was the reward satisfying?</button>
+        </div>
+      </div>
+    </main>
+
+    <span class="blind"></span>
+    <button type="button" class="blind--btnClosed" title="close popup" onclick="closed_popup()"></button>
+
+    <aside class="popup popup--couponGuide">
+      <div class="popup__wrap">
+        <div class="popup__scroll">
+          <h1>Coupon Redemption Guide</h1>
+          <ul class="couponGuide__list">
+            <li data-index="1. ">Open and login to Ragnarok Origin NA</li>
+            <li data-index="2. ">With at least a level 20 character, tap the "rewards" icon in top-right corner</li>
+            <li data-index="3. ">Tap the "redeem" tab and enter your coupon code</li>
+            <li data-index="4. ">You will receive the item(s) via mail</li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+
+    <!-- @@설문조사 -->
+    <aside class="popup popup--survey">
+      <div class="popup__wrap">
+        <div class="popup__scroll">
+          <form action="" class="survey-form">
+            <div class="survey-item">
+              <p class="survey-title">1. Was the reward satisfying?</p>
+              <div class="chk-wrap">
+                <label>
+                  <input type="radio" name="survey1" checked />
+                  <span class="input-text">YES</span>
+                </label>
+                <label>
+                  <input type="radio" name="survey1" />
+                  <span class="input-text">NO</span>
+                </label>
+              </div>
+            </div>
+            <div class="survey-item">
+              <p class="survey-title">2. Was this event interesting?</p>
+              <div class="chk-wrap">
+                <label>
+                  <input type="radio" name="survey2" checked />
+                  <span class="input-text">YES</span>
+                </label>
+                <label>
+                  <input type="radio" name="survey2" />
+                  <span class="input-text">NO</span>
+                </label>
+              </div>
+            </div>
+            <div class="survey-item">
+              <p class="survey-title">3. Would you participate in a similar future event?</p>
+              <div class="chk-wrap">
+                <label>
+                  <input type="radio" name="survey3" checked />
+                  <span class="input-text">YES</span>
+                </label>
+                <label>
+                  <input type="radio" name="survey3" />
+                  <span class="input-text">NO</span>
+                </label>
+              </div>
+            </div>
+            <div>
+              <!-- recapcha 영역 -->
+              <img src="//via.placeholder.com/480x120?text=reCAPCHA" alt="recapcha 작업 시 해당 이미지 삭제해주세요" />
+            </div>
+
+            <button class="survey-btn" type="" onclick="alert('Thank you for completing the survey! \nWe appreciate your feedback.');closed_popup();$('.survey-btn').hide()">Submit</button>
+          </form>
+        </div>
+      </div>
+
+      <!--
+        @@제출 포기.
+      -->
+      <button class="survey-cancel" onclick="alert('We\'re always trying to give better promotions. \nWe hope to hear from you in the future.');closed_popup()">Sorry. I'll participate next time</button>
+    </aside>
+
+    {% include_relative inc/footer.html %}
+
+    <script>
+      // @@고른카드
+      let tarotPicked = localStorage.getItem('tarot');
+      let soulmatePicked = localStorage.getItem('soulmate');
+
+      if (tarotPicked == null || soulmatePicked == null) {
+        alert(`Please start from the beginning.`);
+        // You didn't choose cards.\n
+        location.href = `index.html`;
+      }
+
+      $.ajax({
+        type: 'GET',
+        url: 'js/cards.json',
+        dataType: 'json',
+      }).done(function (data) {
+        //쿠폰코드
+        $('#couponCode__input').val(data.soulmate[soulmatePicked - 1].couponCode);
+
+        //다운로드 파일이름 변경, 카드 array
+        var newTarot = '';
+        var newSoulmate = '';
+
+        // S: 221109 수정
+        newTarot += `<div class="card picked" data-card-kind="tarot"><div class="cardCase"> <img src="assets/images/tarot/${tarotPicked}.jpg"> <div class="card__description"> <img src="assets/images/tarot/${tarotPicked}_desc.jpg"></div> </div>`;
+        newTarot += `<a class="btn btn--download btn_download_tarot" title="Download tarot Card" href="assets/images/tarot/${tarotPicked}_download.jpg" download="Tarot_` + data.tarot[tarotPicked - 1].name + `.jpg"></a>`; //221110 수정 :Google Tag Manager
+        newTarot += `<button class="btn btn--flip" title="Show Front of the Card"></button>`;
+        newTarot += `</div>`;
+
+        newSoulmate += `<div class="card picked" data-card-kind="soulmate"><div class="cardCase"> <img src="assets/images/soulmate/${soulmatePicked}.jpg"> <div class="card__description"> <img src="assets/images/soulmate/${soulmatePicked}_desc.jpg"></div> </div>`;
+        newSoulmate += `<a class="btn btn--download btn_download_soulmate" title="Download Soulmate Card" href="assets/images/soulmate/${soulmatePicked}_download.jpg" download="Soulmate_` + data.soulmate[soulmatePicked - 1].name + `.jpg"></a>`; //221110 수정 :Google Tag Manager
+        newSoulmate += `<button class="btn btn--flip" title="Show Front of the Card"></button>`;
+        newSoulmate += `</div>`;
+
+        $('.collectCard-swiper--soulmate').html(newSoulmate);
+        $('.collectCard-swiper--tarot').html(newTarot);
+      });
+
+      //고른 카드 위치로 swiper 이동
+      // collectTarotSwiper.slideTo(tarotPicked - 1, 0, false);
+      // collectSoulmateSwiper.slideTo(soulmatePicked - 1, 0, false);
+
+      $(document).on('click', '.btn--flip', function () {
+        if ($(this).hasClass('on')) {
+          $(this).parent('.card').find('.card__description').stop().fadeOut();
+          $(this).attr('title', 'Show Description of the Card');
+          $(this).removeClass('on');
+        } else {
+          $(this).parent('.card').find('.card__description').stop().fadeIn();
+          $(this).attr('title', 'Show Front of the Card');
+          $(this).addClass('on');
+        }
+      });
+
+      function copyCouponCode() {
+        const couponCode = document.getElementById('couponCode__input');
+        couponCode.select();
+        document.execCommand('copy');
+        couponCode.blur();
+        alert('The coupon code has been copied.');
+      }
+
+      function copyUrl() {
+        var dummy = document.createElement('input');
+        var text = window.location.href.split('collectCard.html')[0];
+        document.body.appendChild(dummy);
+        dummy.value = text + 'index.html'; // dummy.value = text;
+        dummy.select();
+        //navigator.clipboard.writeText(dummy.value);
+        document.execCommand('copy');
+        document.body.removeChild(dummy);
+        alert('The link has been copied.');
+      }
+
+      $(window).scroll(function (e) {
+        var windowHeight = $(window).outerHeight();
+        var topPosition = $(window).scrollTop();
+        var footPosition = $('.survey-btn').offset().top + 68;
+
+        if (topPosition > footPosition - windowHeight) {
+          $('.survey-btn .popup-link').addClass('fix');
+        } else {
+          $('.survey-btn .popup-link').removeClass('fix');
+        }
+      });
+    </script>
+  </body>
+</html>

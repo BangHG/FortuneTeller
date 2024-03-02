@@ -1,0 +1,14 @@
+﻿.footer {
+  // position: relative;
+  // transform: translateY(-100%);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  color: #5f5689;
+  font-size: 13px;
+  line-height: 1.3;
+  // height: 13px * 1.3 * 2;
+  padding: 1em 0;
+  z-index: 100;
+}

@@ -1,0 +1,182 @@
+﻿{
+  "tarot": [
+    {
+      "id": 1,
+      "name": "The Fool",
+      "desc": "You will have new beginnings and have a strong faith in the future. You will bring good luck and a new adventure awaits you. Embrace the unknown with an open and curious mind."
+    },
+    {
+      "id": 2,
+      "name": "The Magician",
+      "desc": "You are immensely talented and capable. Commit to your goals with inspired action. Tap into your abilities to reach your full potential. "
+    },
+    {
+      "id": 3,
+      "name": "The High Priestess",
+      "desc": "Right now you should embody stillness and passivity. Don't rush any decisions and take your time to understand things around you. Trust your instinct and intuition."
+    },
+    {
+      "id": 4,
+      "name": "The Empress",
+      "desc": "It is the perfect time to create and expand. You will bring growth with a new business, child or relationship. You have an abundant mindset, so seek out new opportunities. "
+    },
+    {
+      "id": 5,
+      "name": "The Emperor",
+      "desc": "You have reached immense stability and security, with everything under your control. Your hard work and discipline has brought you agency and independence. Show confidence and command your life."
+    },
+    {
+      "id": 6,
+      "name": "The Hierophant",
+      "desc": "You should adhere to principles and rules without taking many risks. As such, working with a teacher or mentor will be greatly beneficial. You can also find deep comfort by being part of a community."
+    },
+    {
+      "id": 7,
+      "name": "The Lovers",
+      "desc": "Try to make a beautiful connection with a loved one. This person may be your soulmate, someone who, together with you, makes you whole."
+    },
+    {
+      "id": 8,
+      "name": "The Chariot",
+      "desc": "This card represents willpower and determination. Be assertive and bold in expressing yourself, with confident decision-making. It may be difficult, but try to stay the course."
+    },
+    {
+      "id": 9,
+      "name": "Strength",
+      "desc": "Be encouraged! If you have been going through a rough time, your continued perseverance will pay off. Find your inner strength and strong will while taming your emotions."
+    },
+    {
+      "id": 10,
+      "name": "The Hermit",
+      "desc": "Now is the perfect time for you to take a weekend retreat. Spend time contemplating your motivations and values, finding your inner true self. You may find it is time to change course and reprioritize. "
+    },
+    {
+      "id": 11,
+      "name": "Wheel of Fortune",
+      "desc": "The only constant in life is change. If things have been difficult, rest assured this period will pass. If things have been going very well, things may normalize too, so stay optimistic and open-minded. Go with the flow!"
+    },
+    {
+      "id": 12,
+      "name": "Justice",
+      "desc": "The truth will be revealed. If you have done wrong, be prepared for justice. If you have been seeking justice, it may indeed be served. Be aware of the long-term impact that important choices can have."
+    },
+    {
+      "id": 13,
+      "name": "The Hanged Man",
+      "desc": "You should be mindful of changing old habits and embracing new perspectives. Take the time to pause and evaluate taking a new path forward."
+    },
+    {
+      "id": 14,
+      "name": "Death",
+      "desc": "Fret not, for death is not the loss of life. It is time for significant change and transformation. You should let go of the past and embrace change in your life."
+    },
+    {
+      "id": 15,
+      "name": "Temperance",
+      "desc": "You should remain calm, even if things feel frantic. Manage your emotions and stay composed. Find balance and inclusiveness, and things will come together for you."
+    },
+    {
+      "id": 16,
+      "name": "The Devil",
+      "desc": "You may be trapped in a cycle of seeking gratification. However, you should seek long-term change and stability while being aware of negative patterns and pleasures that can turn unhealthy."
+    },
+    {
+      "id": 17,
+      "name": "The Tower",
+      "desc": "You should be expecting the unexpected. A deep change is coming before you, but you should trust that this change is better for you. A new growth will emerge and you will become wiser and more resilient. "
+    },
+    {
+      "id": 18,
+      "name": "The Star",
+      "desc": "The star brings renewed hope and faith. You may be rediscovering a sense of meaning and purpose while making significant changes in your life. Your dreams really can come true, so you should have high aspirations."
+    },
+    {
+      "id": 19,
+      "name": "The Moon",
+      "desc": "You may have painful memories or fears reappearing. Additionally, things may seem illusive and uncertain, so be careful of making quick decisions. You should trust your intuition and let go of negative anxieties, fears, or thoughts. "
+    },
+    {
+      "id": 20,
+      "name": "The Sun",
+      "desc": "You will bring lots of positive energy, and people will be drawn towards your warmth and optimism. Your path is now aligned, with great fortune and joy to be received. "
+    },
+    {
+      "id": 21,
+      "name": "Judgement",
+      "desc": "You are reaching a significant stage in your life. You are tuning into a higher frequency, leveling up, and awakening your true self. A big decision needs to be made in your life, but trust your judgment and know you are on the right path. "
+    },
+    {
+      "id": 22,
+      "name": "The World",
+      "desc": "A long-term cycle or project has come full circle. Now is the time to find closure and feel a sense of accomplishment. Change, or the next big cycle, looms on the horizon."
+    }
+  ],
+
+  "soulmate": [
+    {
+      "id": 1,
+      "name": "Swordsman",
+      "desc": "The Swordsman is strong both offensively and defensively. They conquer battlefields and provide protection for teammates",
+      "couponCode" : "THEMAOS",
+      "recommHuntingSpot": "Prontera South Gate, Culvert 2F, Sograt Desert",
+      "recommBoss": "Orc Lord",
+      "recommParty": "Dimentional Simulation Battle",
+      "synergyWith": "Acolyte"
+    },
+
+    {
+      "id": 2,
+      "name": "Mage",
+      "desc": "With insight into all the elements that exist in the world, the Mage studies the attributes and characteristics of monsters and helps allies using their high intellectual abilities and knowledge",
+      "couponCode" : "APDLWL",
+      "recommHuntingSpot": "Southern Payon, Northern Geffen, Labyrinth Forest 1F",
+      "recommBoss": "Angeling",
+      "recommParty": "Anthem Trial",
+      "synergyWith": "Swordsman"
+    },
+
+    {
+      "id": 3,
+      "name": "Acolyte",
+      "desc": "The Acolyte doesn't have a weapon to destroy enemies, but they serve to help companions with various prayers that heal and amplify the allies' abilities",
+      "couponCode" : "DJZHFFKDLXM",
+      "recommHuntingSpot": "Culvert 1F, Ant Hell, Prontera North Gate",
+      "recommBoss": "Deviling",
+      "recommParty": "Helheim Disturbance",
+      "synergyWith": "Thief"
+    },
+
+    {
+      "id": 4,
+      "name": "Thief",
+      "desc": "Though the Thief may not have the strength for intense combat, they range in dexterity and quick movements that cause disruption to enemies",
+      "couponCode" : "TLVM",
+      "recommHuntingSpot": "Mjolnir Abandoned Mine, Ant Hell, Culvert 1F",
+      "recommBoss": "Orc Hero",
+      "recommParty": "MINI",
+      "synergyWith": "Merchant"
+    },
+
+    {
+      "id": 5,
+      "name": "Archer",
+      "desc": "The Archer is talented in dealing with the bow and boasts a high accuracy rate through excellent dexterity. They have a great ability to help comrades by supporting fire and shooting enemies from afar.",
+      "couponCode" : "DKCJ",
+      "recommHuntingSpot": "Desert Crossroad, Culvert 1F, Prontera West Gate",
+      "recommBoss": "Golden Thief Bug",
+      "recommParty": "Elite Monster",
+      "synergyWith": "Swordsman"
+    },
+
+    {
+      "id": 6,
+      "name": "Merchant",
+      "desc": "The Merchant has various buying and selling-related skills and is able to carry far more items than any other class on its cart. The Maronite that attacks enemies with zeny inflicts tremendous damage",
+      "couponCode" : "AJCJSXM",
+      "recommHuntingSpot": "Western Geffen, Ant Hell, Prontera North Gate",
+      "recommBoss": "Maya",
+      "recommParty": "Battle of Yggdrasil",
+      "synergyWith": "Mage"
+    }
+  ]
+}

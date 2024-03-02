@@ -1,0 +1,47 @@
+﻿---
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  {% include_relative inc/head.html %}
+  <body>
+    {% include_relative inc/header.html %}
+    <main class="cardPage cardPage--tarot">
+      <div class="title-bx">
+        <a href="index.html" class="logo" title="Go to main page"> </a>
+        <p class="title">
+          <span data-aos="fadeIn" data-aos-duration="1500" data-aos-delay="100">Let's start with tarot card reading.</span>
+          <span data-aos="fadeIn" data-aos-duration="1500" data-aos-delay="300">Please clear your mind and choose a card.</span>
+        </p>
+      </div>
+      <div class="cardPage__container">
+        <div class="cardWrap__scroll">
+          <div class="cardWrap" id="drawingCards">
+            <!-- 타로카드 draw -->
+            <!-- 
+            <div class="card">
+              <span class="cardCase">
+                <span class="card__front"></span>
+                <span class="card__back"></span>
+              </span>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <button id="btn-cardReShuffle" type="button" class="spr-btn spr-btn--reshuffle btn_reshufflethecards_tarot" titld="Shall we reshuffle the cards?">
+          <span class="sr-only"> Shall we reshuffle the cards?</span>
+        </button>
+      </div>
+    </main>
+    {% include_relative inc/footer.html %}
+
+    <script src="assets/js/tarot.js"></script>
+    <script>
+      const cardDiv = '<div class="card" data-card-kind="tarot"><span class="cardCase">  <span class="card__front"></span>  <span class="card__back"></span></span></div>';
+      for (let i = 0; i < 22; i++) {
+        $('#drawingCards').append(cardDiv);
+      }
+    </script>
+  </body>
+</html>

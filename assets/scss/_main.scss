@@ -1,0 +1,397 @@
+﻿/* 
+## z-index level
+5 텍스트(container)
+4 구름 upper
+3 나비, 모래시계, 캐릭터 glow(animation)
+2 캐릭터, 구름 lower, 글리터
+*/
+
+.landing,
+.cardPage {
+  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
+  @include lg-min {
+    min-height: 100vh !important;
+  }
+}
+
+.landing {
+  background: url(../images/main/bg.png) 50% 50%;
+  // background-size: cover;
+  // background-size: 100% auto;
+  // background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow-x: hidden;
+  padding-top: 0;
+  @include lg-min {
+    animation: bgAni 6s infinite linear;
+    @keyframes bgAni {
+      0%,
+      100% {
+        background-size: 200vw auto;
+      }
+      50% {
+        background-size: 250vw auto;
+      }
+    }
+    @media all and (orientation: portrait) {
+      animation-name: bgAniVertical;
+      @keyframes bgAniVertical {
+        0%,
+        100% {
+          background-size: auto 100%;
+        }
+        50% {
+          background-size: auto 150%;
+        }
+      }
+    }
+  }
+  @include lg {
+    background-size: cover;
+  }
+
+  &-bg {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    // &__wrap {
+    //   position: absolute;
+    // }
+    .cell {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background-size: 200vw auto;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+    }
+    &__star {
+      width: 100%;
+      height: 100%;
+      &:after,
+      &:before {
+        background-size: inherit;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        display: block;
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        animation: starBlink 3000ms infinite;
+      }
+      &:after {
+        background-image: url(../images/main/star2.png);
+      }
+      &:before {
+        animation-delay: -500ms;
+        background-image: url(../images/main/star1.png);
+      }
+
+      @keyframes starBlink {
+        0% {
+          opacity: 1;
+        }
+        30%,
+        50%,
+        80% {
+          opacity: 0.5;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    }
+    &__glitter {
+      @keyframes glitter {
+        0% {
+          opacity: 1;
+          transform: rotate(0);
+        }
+
+        33% {
+          transform: rotate(-5deg);
+        }
+        66% {
+          transform: rotate(5deg);
+        }
+        30%,
+        50%,
+        80% {
+          opacity: 0.5;
+        }
+        100% {
+          opacity: 1;
+          transform: rotate(0);
+        }
+      }
+      position: absolute;
+      // background-color: #222;
+      left: 50%;
+      z-index: 2;
+      animation: glitter 5000ms infinite linear;
+      &--1 {
+        animation-delay: -100ms * 4;
+        top: 0;
+        margin-left: 300px;
+      }
+      &--2 {
+        animation-delay: -200ms * 4;
+        top: 137px;
+        margin-left: -350px;
+      }
+      &--1,
+      &--2 {
+        animation-duration: 9000ms;
+        background-image: url(../images/main/glitter1.png);
+        width: 290px;
+        height: 341px;
+      }
+      &--3 {
+        animation-delay: -300ms * 4;
+        background-image: url(../images/main/glitter2.png);
+        width: 222px;
+        height: 262px;
+        top: 490px;
+        margin-left: 200px;
+      }
+      &--4,
+      &--5 {
+        background-image: url(../images/main/glitter3.png);
+        width: 150px;
+        height: 176px;
+      }
+      &--4 {
+        animation-delay: -400ms * 4;
+        margin-left: 300px;
+        top: 360px;
+      }
+      &--5 {
+        top: 38px;
+        margin-left: -500px;
+      }
+    }
+    &__cloud {
+      position: fixed;
+      height: 100vh;
+      width: 100vw;
+      top: 0;
+      left: 0;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-size: 3480px auto;
+      @media all and (min-width: 2560px) {
+        background-size: 200vw auto;
+      }
+      @media all and (orientation: portrait) {
+        background-size: auto 200vh;
+      }
+      &--upper {
+        z-index: 4;
+        background-image: url(../images/main/cloud9.png),
+          //
+          url(../images/main/cloud5.png),
+          //
+          url(../images/main/cloud7.png);
+      }
+      &--lower {
+        z-index: 2;
+        background-image: url(../images/main/cloud6.png),
+          //
+          url(../images/main/cloud8.png),
+          //
+          url(../images/main/cloud4.png),
+          //
+          url(../images/main/cloud3.png),
+          //
+          url(../images/main/cloud2.png),
+          //
+          url(../images/main/cloud1.png);
+      }
+    }
+  }
+
+  &-content {
+    display: flex;
+    align-content: flex-end;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-height: 1022px; //FIXME:
+    @include lg-min {
+      padding-bottom: calc(1022px - 932px);
+    }
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 50%;
+    }
+    &:after {
+      width: 743px;
+      height: 258px;
+      margin-left: (-743px/2);
+      top: 0;
+      background: url(../images/main/magicCircle-text.png) no-repeat;
+    }
+    &:before {
+      top: 55px;
+      border-radius: 50%;
+      width: 770px;
+      height: 770px;
+      margin-left: (-770px/2);
+      background: url(../images/main/magicCircle.png) no-repeat 50% 50%;
+      animation: magicCircleSpin 120s infinite linear;
+      @keyframes magicCircleSpin {
+        0% {
+          transform: rotate(0);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    }
+    &__character {
+      z-index: 2;
+      background-position: 0 0;
+      top: 40px;
+      &,
+      &:before {
+        background: url(../images/main/character.png?ver);
+        width: 610px;
+        height: 1010px;
+        display: block;
+        margin: 0 auto;
+        position: absolute;
+      }
+      &:before {
+        z-index: 3;
+        content: '';
+        opacity: 0.7;
+        background-position: 100% 0;
+        animation: characterGlow 3s infinite;
+      }
+      @keyframes characterGlow {
+        0%,
+        100% {
+          opacity: 0.7;
+        }
+        60% {
+          opacity: 1;
+        }
+      }
+    }
+    .container {
+      z-index: 5;
+    }
+    &__logo {
+      position: relative;
+      // z-index: 5;
+      background: url(../images/main/logo.png);
+      background-size: contain;
+      display: block;
+      margin: 0 auto;
+      width: 246px;
+      height: 159px;
+      @include lg-min {
+        top: 60px;
+        position: absolute;
+        left: 50%;
+        margin-left: -131px;
+      }
+    }
+    &__title {
+      position: relative;
+      // z-index: 5;
+      text-align: center;
+
+      margin-top: -30px;
+      @include lg-min {
+        margin-top: 0;
+      }
+      .title,
+      .title-sub {
+        margin: 0 auto;
+      }
+      .title {
+        // background: url(../images/main/title.png);
+        // width: 529px;
+        // height: 195px;
+      }
+      .title-sub {
+        margin-top: 14px;
+        // background: url(../images/main/title-sub.png);
+        // width: 627px;
+        // height: 60px;
+      }
+    }
+    &__btn {
+      position: relative;
+      // z-index: 5;
+      margin-top: 20px;
+    }
+  }
+
+  @include lg {
+    padding-top: vw(50); //vw(178);
+    background-image: url(../images/main/bg_m.jpg);
+    &-bg {
+      // display: none;
+      &__cloud {
+        @include lg {
+          display: none;
+        }
+      }
+    }
+    &-content {
+      position: relative;
+      &__logo {
+        background-image: url(../images/main/logo_m.png);
+        width: vw(352);
+        height: vw(224);
+        position: absolute;
+        top: 0;
+        left: 50%;
+        margin-left: vw(352) / -2;
+      }
+    }
+  }
+}
+
+.app-download {
+  z-index: 5;
+  position: relative;
+  display: flex;
+  @at-root .landing-content .app-download {
+    margin-top: 30px;
+  }
+  align-items: center;
+  justify-content: center;
+  li {
+    margin: 0 8px;
+  }
+  &__link {
+    display: block;
+    width: 230px;
+    // height: 68px;
+    padding-bottom: percentage(68/230);
+    background-size: contain;
+    background-repeat: no-repeat;
+    &--aos {
+      background-image: url(../images/inc/app-download-aos.png);
+    }
+    &--ios {
+      background-image: url(../images/inc/app-download-ios.png);
+    }
+  }
+}

@@ -1,0 +1,44 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=768" />
+
+  <title>Fortune Teller</title>
+
+  <meta property="og:image" content="og_img/og_img.jpg" />
+  <link rel="icon" href="og_img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="og_img/favicon.ico" type="image/x-icon" />
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="assets/js/lib/aos.js"></script>
+  <script src="assets/js/lib/jquery.mCustomScrollbar.min.js"></script>
+  <script src="assets/js/lib/swiper.min.js"></script>
+  <script src="assets/js/common.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="assets/css/lib/aos.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/lib/jquery.mCustomScrollbar.min.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/lib/swiper.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/common.min.css?221122" />
+
+  <script>
+    function ieVersion() {
+      var agent = navigator.userAgent.toLowerCase();
+      if ((navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || agent.indexOf('msie') != -1) {
+        $('[data-aos]').attr('data-aos', '');
+        alert('Internet Explorer is not supported. \nPlease use MS Edge and Google Chrome');
+      }
+    }
+
+    $(document).ready(function () {
+      ieVersion();
+    });
+    document.oncontextmenu = function () {
+      return false;
+    };
+    $('body').attr({
+      oncontextmenu: 'return false',
+      onselectstart: 'return false',
+      ondragstart: 'return false',
+    });
+  </script>
+</head>

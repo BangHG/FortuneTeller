@@ -1,0 +1,128 @@
+﻿---
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  {% include_relative inc/head.html %}
+  <body>
+    {% include_relative inc/header.html %}
+    <main class="landing">
+      <div class="landing-bg">
+        <span class="landing-bg__star cell"></span>
+        <span class="landing-bg__glitter landing-bg__glitter--1"></span>
+        <span class="landing-bg__glitter landing-bg__glitter--2"></span>
+        <span class="landing-bg__glitter landing-bg__glitter--3"></span>
+        <span class="landing-bg__glitter landing-bg__glitter--4"></span>
+        <span class="landing-bg__glitter landing-bg__glitter--5"></span>
+      </div>
+
+      <div class="landing-content">
+        <div class="landing-content__character" data-aos="fade-in" data-aos-duration="1000"></div>
+        <span class="cell landing-bg__cloud landing-bg__cloud--upper"></span>
+        <span class="butterfly-container butterfly-container--1">
+          <span class="wrap">
+            <span class="butterfly"><span class="wing left"></span><span class="wing right"></span></span>
+          </span>
+        </span>
+        <span class="butterfly-container butterfly-container--2">
+          <span class="wrap">
+            <span class="butterfly"><span class="wing left"></span><span class="wing right"></span></span>
+          </span>
+        </span>
+        <span class="butterfly-container butterfly-container--3">
+          <span class="wrap">
+            <span class="butterfly"><span class="wing left"></span><span class="wing right"></span></span>
+          </span>
+        </span>
+        <span class="butterfly-container butterfly-container--4">
+          <span class="wrap">
+            <span class="butterfly"><span class="wing left"></span><span class="wing right"></span></span>
+          </span>
+        </span>
+        <span class="cell landing-bg__cloud landing-bg__cloud--lower"></span>
+
+        <span class="hourglass hourglass--1"></span><span class="hourglass hourglass--2"></span>
+
+        <div class="container" data-aos="fade-in" data-aos-duration="8000" data-aos-delay="200" data-aos-offset="0">
+          <div class="landing-content__logo"></div>
+          <div class="landing-content__title">
+            <h1 class="title" data-aos="fade-in">
+              <img src="assets/images/main/title.png" alt=" fortune teller " />
+            </h1>
+            <p class="title-sub" data-aos="fade-in">
+              <img src="assets/images/main/title-sub.png" alt="Come see the fortune teller, who will show you your soulmate" />
+            </p>
+          </div>
+
+          <div class="landing-content__btn">
+            <a href="tarotStart.html" class="spr-btn spr-btn--startHere btn_starthere" title="Start Here">
+              <span class="sr-only"> Start Here </span>
+            </a>
+          </div>
+
+          <ul class="app-download">
+            <li><a href="https://app.adjust.com/k4fy0ev" class="btn_googlestore_fortuneteller_main app-download__link app-download__link--aos" target="_blank" title="GET IT ON Google Play"> </a></li>
+
+            <li><a href="https://app.adjust.com/vsn7791" class="app-download__link app-download__link--ios btn_appstore_fortuneteller_main" target="_blank" title="Download on the App Store"> </a></li>
+          </ul>
+        </div>
+      </div>
+    </main>
+    {% include_relative inc/footer.html %}
+
+    <!-- TODO:
+
+    # FLOW #
+
+    index.html
+    ↓
+    tarotStart.html
+    ↓
+    tarotPick.html
+    ↓
+    tarotView.html
+    ↓
+    soulmateStart.html
+    ↓
+    soulmatePick.html
+    ↓
+    soulmateView.html
+    ↓
+    collectCard.html
+
+    -->
+    <script>
+      window.localStorage.clear(); //초기화
+
+      const pageIndex = $('html');
+      pageIndex.mousemove(parallaxMain);
+      // const elemCloud = document.querySelector('.landing-bg__cloud');
+      const elemCloudUpper = document.querySelector('.landing-bg__cloud--upper');
+      const elemCloudLower = document.querySelector('.landing-bg__cloud--lower');
+
+      function parallaxMain(e) {
+        let _w = window.innerWidth / 2;
+        let _h = window.innerHeight / 2;
+        let _mouseX = e.clientX;
+        let _mouseY = e.clientY;
+
+        let _cloud1 = `${50 + (_mouseX - _w) * 0.5 * 0.001}% ${50 + (_mouseY - _h) * 0.5 * 0.001}%`; //9
+        let _cloud2 = `${50 + (_mouseX - _w) * 0.5 * 0.002}% ${50 + (_mouseY - _h) * 0.5 * 0.002}%`; //5
+        let _cloud3 = `${50 + (_mouseX - _w) * 0.5 * 0.003}% ${50 + (_mouseY - _h) * 0.5 * 0.003}%`; //7
+
+        let _cloud4 = `${50 + (_mouseX - _w) * 0.8 * 0.002}% ${50 + (_mouseY - _h) * 0.9 * 0.001}%`; //6
+        let _cloud5 = `${50 + (_mouseX - _w) * 0.8 * 0.001}% ${50 + (_mouseY - _h) * 0.9 * 0.001}%`; //8
+        let _cloud6 = `${50 + (_mouseX - _w) * 0.8 * 0.005}% ${50 + (_mouseY - _h) * 0.9 * 0.004}%`; //4
+        let _cloud7 = `${50 + (_mouseX - _w) * 0.8 * 0.007}% ${50 + (_mouseY - _h) * 0.9 * 0.002}%`; //3
+        let _cloud8 = `${50 + (_mouseX - _w) * 0.8 * 0.002}% ${50 + (_mouseY - _h) * 0.9 * 0.004}%`; //2
+        let _cloud9 = `${50 + (_mouseX - _w) * 0.8 * 0.003}% ${50 + (_mouseY - _h) * 0.9 * 0.002}%`; //1
+
+        let x_cloudUpper = `${_cloud9},${_cloud8},${_cloud7}`;
+        let x_cloudLower = `${_cloud6},${_cloud5},${_cloud4},${_cloud3},${_cloud2},${_cloud1}`;
+
+        elemCloudLower.style.backgroundPosition = x_cloudLower;
+        elemCloudUpper.style.backgroundPosition = x_cloudUpper;
+      }
+    </script>
+  </body>
+</html>
